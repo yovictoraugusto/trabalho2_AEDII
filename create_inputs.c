@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-void generate_sequences(int length, char *alphabet, char *prefix) {
+void generate_sequences(int length, char *bases, char *prefix) {
     if (length == 0) {
         printf("%s\n", prefix);
         return;
@@ -10,14 +10,14 @@ void generate_sequences(int length, char *alphabet, char *prefix) {
 
     for (int i = 0; i < 4; i++) {
         char new_prefix[length + 2]; // +2 para o caractere atual e o terminador nulo
-        sprintf(new_prefix, "%s%c", prefix, alphabet[i]);
-        generate_sequences(length - 1, alphabet, new_prefix);
+        sprintf(new_prefix, "%s%c", prefix, bases[i]);
+        generate_sequences(length - 1, bases, new_prefix);
     }
 }
 
 void print_sequences(int max_length, char *alphabet) {
     for (int i = 1; i <= max_length; i++) {
-        generate_sequences(i, alphabet, "");
+        generate_sequences(i, bases, "");
     }
 }
 

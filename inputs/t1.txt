@@ -11,4 +11,4 @@ insert CCC
 insert T
 find CCC
 find T
-find TTT
+find ATCCT

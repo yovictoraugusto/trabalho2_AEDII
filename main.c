@@ -1,7 +1,14 @@
+/*Alunos:
+    Ícaro Travain Darwich da Rocha RA:156.307
+    Victor Augusto Reis Marques RA:156.620
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 
 typedef struct hashItem{
     int key;
@@ -21,7 +28,6 @@ int convertChatToInt(char str[]){
     int contador = 0;
     while (contador < 13 || str[contador] != '\0')
     {
-        //char entrada[1] = str[contador];
         if( str[contador] == 'A'){
             conversao += 1 * pow(5, contador);
         }else if(str[contador] == 'T'){
@@ -60,43 +66,65 @@ hashItem **insert_hash(char *value, int n, hashItem **hash){
     return hash;
 }
 
-void find_hash(char *value, int n, hashItem **hash){
+int find_hash(char *value, int n, hashItem **hash){
     int key = convertChatToInt(value);
     int index = key % n;
     if(hash[index] == NULL){
-        printf("no\n");
+        return 0;
     }else{
         hashItem *aux = hash[index];
         while(aux != NULL){    //retornar em caso de segmentation fault
             if(aux->key == key){
-                printf("yes\n");
-                return;
+                return 1;
             }else{
                 aux = aux->next;
             }
         }
-        printf("no\n");
     }
-    return;
+    return 0;
+}
+
+int is_prime(int x) {
+    if (x < 2) {
+        return 0;
+    }
+    if (x == 2 || x == 3) {
+        return 1;
+    }
+    if (x % 2 == 0) {
+        return 0;
+    }
+
+    for (int i = 3; i * i <= x; i += 2) {
+        if (x % i == 0) {
+            return 0;
+        }
+    }
+    return 1;
 }
 
 int main(){
-    int n;
+    srand(time(NULL));
+
+    int n, tamHash, teste;
     char op[7];
     char str[13];
 
     scanf("%d", &n);
-    hashItem **hash = createHashTable(n);
 
-    for(int i = 0; i<n; i++){
+    do{
+        tamHash = (rand() % (n - 1)) + n;
+    }while(!is_prime(tamHash));
+
+    hashItem **hash = createHashTable(tamHash);
+
+    for(int i = 0; i < n; i++){
         scanf("%s", op);
-        scanf("%s", str);
-        //printf("%s %s", op, str);   
+        scanf("%s", str);   
         if(strcmp(op, "insert") == 0){
-            //printf("%d\n", convertChatToInt(str));
-            insert_hash(str, n, hash);
+            insert_hash(str, tamHash, hash);       
         }else if(strcmp(op, "find") == 0){
-            find_hash(str, n, hash);
+            printf("%s\n", find_hash(str, tamHash, hash) == 1 ? "yes": "no");
         }
     }
 

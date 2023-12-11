@@ -1,0 +1,41 @@
+Implementação 1
+teste 1
+real    0m0,235s
+user    0m0,117s
+sys     0m0,119s
+
+teste 2
+real    0m0,979s
+user    0m0,554s
+sys     0m0,416s
+
+teste 3
+real    0m1,547s
+user    0m0,861s
+sys     0m0,678s
+
+teste 4
+real    0m1,983s
+user    0m1,114s
+sys     0m0,861s
+
+teste 5
+real    0m1,983s
+user    0m1,114s
+sys     0m0,861s
+
+
+Implementação 2
+teste 1
+
+
+teste 2
+
+
+teste 3
+
+
+teste 4
+
+
+teste 5
