@@ -5,18 +5,26 @@
 
 
 int main(){
-    char letra[13] = "AAAAAAAAAAAA";
-    int numero = 999999;
+    char proteina1[13] = "AGAGTAAATGC";
+    char proteina2[13] = "TTGGTGTGAA";
 
+    int numero;
 
+    scanf("%d", &numero);
 
-    printf ("%d\n", numero + 1);
+    printf ("%d\n", numero);
 
-    for (int i = 0; i < numero; i++)
+    printf("insert %s\n", proteina1);
+    for (int i = 0; i < numero/2 - 1; i++)
     {
-        printf("insert %s\n", letra);
+        printf("insert %s\n", proteina2);
+    }
+    for (int i = 0; i < numero/2; i++)
+    {
+        printf("find %s\n", proteina1);
     }
     
-    printf("find C\n");
+    
+    printf("find %s\n", proteina1);
     return 0;
 }
